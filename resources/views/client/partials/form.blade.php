@@ -6,69 +6,69 @@
     </div>
 @endif
 
-    @section ('panel1_panel_title', 'Основная информация')
-    @section ('panel1_panel_body')
-        <div class="col-sm-12">
-            <div class="row">
+@section ('panel1_panel_title', 'Основная информация')
+@section ('panel1_panel_body')
+    <div class="col-sm-12">
+        <div class="row">
 
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        {!! Form::label('last_name', 'Фамилия:', ['class' => 'control-label']) !!}
-                        {!! Form::text('last_name', null, ['class' => 'form-control', 'data-inputmask-regex' => "[A-ZА-ЯЁa-zа-яё-]+"]) !!}
-                    </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    {!! Form::label('last_name', 'Фамилия:', ['class' => 'control-label']) !!}
+                    {!! Form::text('last_name', null, ['class' => 'form-control', 'data-inputmask-regex' => "[A-ZА-ЯЁa-zа-яё-]+"]) !!}
                 </div>
-
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        {!! Form::label('first_name', 'Имя:', ['class' => 'control-label']) !!}
-                        {!! Form::text('first_name', null, ['class' => 'form-control', 'data-inputmask-regex' => "[A-ZА-ЯЁa-zа-яё-]+"]) !!}
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        {!! Form::label('middle_name', 'Отчество:', ['class' => 'control-label']) !!}
-                        {!! Form::text('middle_name', null, ['class' => 'form-control', 'data-inputmask-regex' => "[A-ZА-ЯЁa-zа-яё-]+"]) !!}
-                    </div>
-                </div>
-
             </div>
 
-            <div class="row">
-
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        {!! Form::label('birth_date', 'Дата рождения:', ['class' => 'control-label']) !!}
-                        {!! Form::date('birth_date', null, ['class' => 'form-control']) !!}
-                    </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    {!! Form::label('first_name', 'Имя:', ['class' => 'control-label']) !!}
+                    {!! Form::text('first_name', null, ['class' => 'form-control', 'data-inputmask-regex' => "[A-ZА-ЯЁa-zа-яё-]+"]) !!}
                 </div>
+            </div>
 
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        {!! Form::label('sex', 'Пол:', ['class' => 'control-label']) !!}
-                        {!! Form::select('sex', ['M' => trans('sex.M'), 'F' => trans('sex.F')], null, ['class' => 'form-control']) !!}
-                    </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    {!! Form::label('middle_name', 'Отчество:', ['class' => 'control-label']) !!}
+                    {!! Form::text('middle_name', null, ['class' => 'form-control', 'data-inputmask-regex' => "[A-ZА-ЯЁa-zа-яё-]+"]) !!}
                 </div>
-
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        {!! Form::label('marital_status_id', 'Семейное положение:', ['class' => 'control-label']) !!}
-                        {!! Form::select('marital_status_id', $marital_statuses, null, ['class' => 'form-control']) !!}
-                    </div>
-                </div>
-
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        {!! Form::label('nationality_id', 'Гражданство:', ['class' => 'control-label']) !!}
-                        {!! Form::select('nationality_id', $nationalities, null, ['class' => 'form-control']) !!}
-                    </div>
-                </div>
-
             </div>
 
         </div>
-    @endsection
-    @include('widgets.panel', array('header'=>true, 'as'=>'panel1'))
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    {!! Form::label('birth_date', 'Дата рождения:', ['class' => 'control-label']) !!}
+                    {!! Form::date('birth_date', null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    {!! Form::label('sex', 'Пол:', ['class' => 'control-label']) !!}
+                    {!! Form::select('sex', ['M' => trans('sex.M'), 'F' => trans('sex.F')], null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    {!! Form::label('marital_status_id', 'Семейное положение:', ['class' => 'control-label']) !!}
+                    {!! Form::select('marital_status_id', $marital_statuses, null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    {!! Form::label('nationality_id', 'Гражданство:', ['class' => 'control-label']) !!}
+                    {!! Form::select('nationality_id', $nationalities, null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+@endsection
+@include('widgets.panel', array('header'=>true, 'as'=>'panel1'))
 
 @section ('panel2_panel_title', 'Контакты')
 @section ('panel2_panel_body')

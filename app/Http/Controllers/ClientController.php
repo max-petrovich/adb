@@ -65,7 +65,9 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        return redirect()->route('client.edit', $id);
+        $client = User::eagerLoadAll()->findOrFail($id);
+
+        return view('client.show', compact('client'));
     }
 
     /**
@@ -121,6 +123,6 @@ class ClientController extends Controller
 
         Session::flash('flash_message', 'Клиент успешно удалён!');
 
-        return redirect()->back();
+        return redirect()->route('client.index');
     }
 }

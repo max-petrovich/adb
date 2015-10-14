@@ -26,7 +26,7 @@
                     <td>{{ $client->contacts->email }}</td>
                     <td>
                         <a href="{{ route('client.edit', $client->id) }}" title="Редактировать"><button type="submit" class="btn btn-link fa fa-edit"></button></a>
-                        {!! Form::open(array('route' => ['client.destroy', $client->id], 'method' => 'delete')) !!}
+                        {!! Form::open(array('route' => ['client.destroy', $client->id], 'method' => 'delete', 'style' => 'display:inline;')) !!}
                         <button type="submit" class="btn btn-link fa fa-trash-o confirmDeleteClient"></button>
                         {!! Form::close() !!}
 

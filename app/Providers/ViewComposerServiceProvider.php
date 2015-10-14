@@ -34,7 +34,10 @@ class ViewComposerServiceProvider extends ServiceProvider
 
     public function clientForm()
     {
-        View::composer('client.partials.form', function ($view) {
+        View::composer([
+            'client.partials.form',
+            'client.show'
+        ], function ($view) {
             $view->with([
                 'marital_statuses' => MaritalStatus::lists('name', 'id'),
                 'nationalities' => Nationality::lists('name', 'id'),

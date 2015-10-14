@@ -26,13 +26,16 @@ class StoreClientRequest extends Request
         return [
             // Basic info
             'last_name' => [
-                'required', 'alpha_dash', 'between:2,20'
+                'required', 'between:2,20',
+                'regex:/[A-ZА-ЯЁa-zа-яё-]+/u',
             ],
             'first_name' => [
-                'required', 'alpha_dash', 'between:2,20'
+                'required', 'between:2,20',
+                'regex:/[A-ZА-ЯЁa-zа-яё-]+/u',
             ],
             'middle_name' => [
-                'required', 'alpha_dash', 'between:2,20'
+                'required', 'between:2,20',
+                'regex:/[A-ZА-ЯЁa-zа-яё-]+/u',
             ],
             'birth_date' => [
                 'required', 'date', 'before:now'
