@@ -15,5 +15,11 @@ class UserContacts extends Model
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
+    
+    public function setEmailAttribute($email) {
+	    if (empty($email)) {
+		    $this->attributes['email'] = NULL;
+	    }
+    }
 
 }

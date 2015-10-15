@@ -72,26 +72,31 @@ class StoreClientRequest extends Request
                 'unique:user_passports,passport_id,' . $this->client . ',user_id'
             ],
             'passport.issued_organization' => [
-                'required', 'string'
+                'required', 'string',
+                'between:2,40',
+                
             ],
             'passport.issue_date' => [
                 'required', 'date', 'before:now'
             ],
             // Location
             'location.birth_place' => [
-                'required', 'string'
+                'required', 'string',
+                'between:2,40',
             ],
             'location.actual_city_id' => [
                 'exists:cities,id'
             ],
             'location.actual_address' => [
-                'required', 'string'
+                'required', 'string',
+                'between:2,40',
             ],
             'location.residence_city_id' => [
                 'exists:cities,id'
             ],
             'location.residence_address' => [
-                'required', 'string'
+                'required', 'string',
+                'between:2,40',
             ],
             // Social Info
             'socialInfo.reservist' => [
@@ -105,13 +110,16 @@ class StoreClientRequest extends Request
             ],
             // Works
             'work.work_place' => [
-                'string'
+                'string',
+                'between:2,40',
             ],
             'work.position' => [
-                'string'
+                'string',
+                'between:2,40',
             ],
             'work.salary' => [
-                'numeric'
+                'numeric',
+                'max:20'
             ]
         ];
     }
