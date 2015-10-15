@@ -27,15 +27,15 @@ class StoreClientRequest extends Request
             // Basic info
             'last_name' => [
                 'required', 'between:2,20',
-                'regex:/[A-ZА-ЯЁa-zа-яё-]+/u',
+                'regex:/[A-ZА-ЯЁa-zа-яё-]+/',
             ],
             'first_name' => [
                 'required', 'between:2,20',
-                'regex:/[A-ZА-ЯЁa-zа-яё-]+/u',
+                'regex:/[A-ZА-ЯЁa-zа-яё-]+/',
             ],
             'middle_name' => [
                 'required', 'between:2,20',
-                'regex:/[A-ZА-ЯЁa-zа-яё-]+/u',
+                'regex:/[A-ZА-ЯЁa-zа-яё-]+/',
             ],
             'birth_date' => [
                 'required', 'date', 'before:now'
@@ -54,10 +54,10 @@ class StoreClientRequest extends Request
                 'email', 'unique:user_contacts,email,' . $this->client . ',user_id'
             ],
             'contacts.phone_home' => [
-                'digits:9'
+                'digits:11'
             ],
             'contacts.phone_mobile' => [
-                'digits:9'
+                'digits:11'
             ],
             // Passport
             'passport.series' => [
@@ -68,7 +68,7 @@ class StoreClientRequest extends Request
                 'unique:user_passports,number,' . $this->client . ',user_id,series,'. $this->input('passport.series')
             ],
             'passport.passport_id' => [
-                'required', 'regex:/^\d{7}[A-Z]\d{3}[A-Z]{2}\d$/u',
+                'required', 'regex:/^\d{7}[A-Z]\d{3}[A-Z]{2}\d$/',
                 'unique:user_passports,passport_id,' . $this->client . ',user_id'
             ],
             'passport.issued_organization' => [
@@ -110,7 +110,7 @@ class StoreClientRequest extends Request
             'work.position' => [
                 'string'
             ],
-            'work.position' => [
+            'work.salary' => [
                 'numeric'
             ]
         ];

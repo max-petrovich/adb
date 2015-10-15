@@ -88,13 +88,13 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     {!! Form::label('contacts[phone_home]', 'Домашний телефон:(необяз.)', ['class' => 'control-label']) !!}
-                    {!! Form::tel('contacts[phone_home]', null, ['class' => 'form-control', 'data-inputmask' => "'mask': '(999) 99-99-99'"]) !!}
+                    {!! Form::tel('contacts[phone_home]', null, ['class' => 'form-control', 'data-inputmask' => "'mask': '9 (999) 99-99-999'"]) !!}
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     {!! Form::label('contacts[phone_mobile]', 'Мобильный:(необяз.)', ['class' => 'control-label']) !!}
-                    {!! Form::text('contacts[phone_mobile]', null, ['class' => 'form-control', 'data-inputmask' => "'mask': '+375 (99) 999-99-99'"]) !!}
+                    {!! Form::text('contacts[phone_mobile]', null, ['class' => 'form-control', 'data-inputmask' => "'mask': '9 (999) 99-99-999'"]) !!}
                 </div>
             </div>
         </div>
