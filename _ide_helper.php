@@ -11559,11 +11559,51 @@ namespace {
          * @param array $rules
          * @param array $messages
          * @param array $customAttributes
-         * @return \Illuminate\Validation\Validator 
+         * @return \Proengsoft\JsValidation\Validator 
          * @static 
          */
         public static function make($data, $rules, $messages = array(), $customAttributes = array()){
-            return \Illuminate\Validation\Factory::make($data, $rules, $messages, $customAttributes);
+            return \Proengsoft\JsValidation\Factory::make($data, $rules, $messages, $customAttributes);
+        }
+        
+        /**
+         * Sets the session manager used to secure Ajax validations.
+         *
+         * @param \Illuminate\Session\Store $store
+         * @static 
+         */
+        public static function setSessionStore($store){
+            return \Proengsoft\JsValidation\Factory::setSessionStore($store);
+        }
+        
+        /**
+         * Sets the session manager used to secure Ajax validations.
+         *
+         * @return \Illuminate\Session\Store 
+         * @static 
+         */
+        public static function getSessionStore(){
+            return \Proengsoft\JsValidation\Factory::getSessionStore();
+        }
+        
+        /**
+         * Enables or disable JsValidation Remote validations.
+         *
+         * @param bool $enabled
+         * @static 
+         */
+        public static function setJsRemoteEnabled($enabled){
+            return \Proengsoft\JsValidation\Factory::setJsRemoteEnabled($enabled);
+        }
+        
+        /**
+         * Check if JsValidation Remote validations are enabled.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function isJsRemoteEnabled(){
+            return \Proengsoft\JsValidation\Factory::isJsRemoteEnabled();
         }
         
         /**
@@ -11576,7 +11616,7 @@ namespace {
          * @static 
          */
         public static function extend($rule, $extension, $message = null){
-            \Illuminate\Validation\Factory::extend($rule, $extension, $message);
+            \Proengsoft\JsValidation\Factory::extend($rule, $extension, $message);
         }
         
         /**
@@ -11589,7 +11629,7 @@ namespace {
          * @static 
          */
         public static function extendImplicit($rule, $extension, $message = null){
-            \Illuminate\Validation\Factory::extendImplicit($rule, $extension, $message);
+            \Proengsoft\JsValidation\Factory::extendImplicit($rule, $extension, $message);
         }
         
         /**
@@ -11601,7 +11641,7 @@ namespace {
          * @static 
          */
         public static function replacer($rule, $replacer){
-            \Illuminate\Validation\Factory::replacer($rule, $replacer);
+            \Proengsoft\JsValidation\Factory::replacer($rule, $replacer);
         }
         
         /**
@@ -11612,7 +11652,7 @@ namespace {
          * @static 
          */
         public static function resolver($resolver){
-            \Illuminate\Validation\Factory::resolver($resolver);
+            \Proengsoft\JsValidation\Factory::resolver($resolver);
         }
         
         /**
@@ -11622,7 +11662,7 @@ namespace {
          * @static 
          */
         public static function getTranslator(){
-            return \Illuminate\Validation\Factory::getTranslator();
+            return \Proengsoft\JsValidation\Factory::getTranslator();
         }
         
         /**
@@ -11632,7 +11672,7 @@ namespace {
          * @static 
          */
         public static function getPresenceVerifier(){
-            return \Illuminate\Validation\Factory::getPresenceVerifier();
+            return \Proengsoft\JsValidation\Factory::getPresenceVerifier();
         }
         
         /**
@@ -11643,7 +11683,7 @@ namespace {
          * @static 
          */
         public static function setPresenceVerifier($presenceVerifier){
-            \Illuminate\Validation\Factory::setPresenceVerifier($presenceVerifier);
+            \Proengsoft\JsValidation\Factory::setPresenceVerifier($presenceVerifier);
         }
         
     }
@@ -13332,6 +13372,50 @@ namespace {
         public static function offsetUnset($key){
             //Method inherited from \DebugBar\DebugBar            
             return \Barryvdh\Debugbar\LaravelDebugbar::offsetUnset($key);
+        }
+        
+    }
+
+
+    class JsValidator extends \Proengsoft\JsValidation\Facades\JsValidatorFacade{
+        
+        /**
+         * Creates JsValidator instance based on rules and message arrays.
+         *
+         * @param array $rules
+         * @param array $messages
+         * @param array $customAttributes
+         * @param null|string $selector
+         * @return \Proengsoft\JsValidation\Manager 
+         * @static 
+         */
+        public static function make($rules, $messages = array(), $customAttributes = array(), $selector = null){
+            return \Proengsoft\JsValidation\JsValidatorFactory::make($rules, $messages, $customAttributes, $selector);
+        }
+        
+        /**
+         * Creates JsValidator instance based on FormRequest.
+         *
+         * @param $formRequest
+         * @param null $selector
+         * @return \Proengsoft\JsValidation\Manager 
+         * @throws FormRequestArgumentException
+         * @static 
+         */
+        public static function formRequest($formRequest, $selector = null){
+            return \Proengsoft\JsValidation\JsValidatorFactory::formRequest($formRequest, $selector);
+        }
+        
+        /**
+         * Creates JsValidator instance based on Validator.
+         *
+         * @param \Proengsoft\JsValidation\Validator $validator
+         * @param string|null $selector
+         * @return \Proengsoft\JsValidation\Manager 
+         * @static 
+         */
+        public static function validator($validator, $selector = null){
+            return \Proengsoft\JsValidation\JsValidatorFactory::validator($validator, $selector);
         }
         
     }

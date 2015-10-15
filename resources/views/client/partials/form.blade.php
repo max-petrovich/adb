@@ -1,3 +1,8 @@
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js" type="text/javascript"></script>
+<script src="{{ url('/js/jsvalidation.min.js') }}" type="text/javascript"></script>
+
+{!! $jsValidator !!}
+
 @include('client.partials.errors')
 
 @if(Session::has('flash_message'))

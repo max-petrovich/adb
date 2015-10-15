@@ -12,6 +12,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\StoreClientRequest;
+use JsValidator;
 use Session;
 
 class ClientController extends Controller
@@ -78,6 +79,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
+
         $client = User::eagerLoadAll()->findOrFail($id);
 
         return view('client.edit', compact('client'));

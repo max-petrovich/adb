@@ -22,9 +22,9 @@ return [
 	"array"                => "The :attribute must be an array.",
 	"before"               => "Дата в поле <b>:attribute</b> должна быть ранее указанной даты - :date.",
 	"between"              => [
-		"numeric" => "Значение поля <b>:attribute</b> должна быть между :min and :max.",
+		"numeric" => "Значение поля <b>:attribute</b> должна быть между :min и :max.",
 		"file"    => "The :attribute must be between :min and :max kilobytes.",
-		"string"  => "Длина строки <b>:attribute</b> должна быть между :min and :max символов.",
+		"string"  => "Длина строки <b>:attribute</b> должна быть между :min и :max символов.",
 		"array"   => "The :attribute must have between :min and :max items.",
 	],
 	"boolean"              => "The :attribute field must be true or false.",

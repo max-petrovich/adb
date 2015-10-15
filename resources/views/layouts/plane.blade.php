@@ -16,7 +16,6 @@
     <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src="{{ asset("assets/scripts/frontend.js") }}" type="text/javascript"></script>
     <script src="{{ asset("assets/inputmask/inputmask.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("assets/inputmask/inputmask.js") }}" type="text/javascript"></script>
     <script src="/js/main.js" type="text/javascript"></script>
 </head>
 <body>

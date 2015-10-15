@@ -51,7 +51,7 @@ class StoreClientRequest extends Request
             ],
             // Contacts
             'contacts.email' => [
-               'email', 'unique:user_contacts,email,' . $this->client . ',user_id'
+                'email', 'unique:user_contacts,email,' . $this->client . ',user_id'
             ],
             'contacts.phone_home' => [
                 'digits:9'
