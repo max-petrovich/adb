@@ -15,26 +15,7 @@
                 <a class="navbar-brand" href="{{ url ('') }}">АДБ - 1</a>
             </div>
             <!-- /.navbar-header -->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li {!! (Request::is('*client') ? 'class="active"' : '') !!}>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Клиенты<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ route('client.create') }}"><i class="fa fa-edit fa-fw"></i> Добавить клиента</a>
-                                </li>
-                                <li {!! (Request::is('*client') ? 'class="active"' : '') !!}>
-                                    <a href="{{ route('client.index') }}"><i class="fa fa-table fa-fw"></i> Список клиентов</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
+            @include('partials.menu')
         </nav>
 
         <div id="page-wrapper">

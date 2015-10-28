@@ -2,6 +2,9 @@
 
 
 Route::resource('client','ClientController');
+Route::resource('deposit','DepositController');
+Route::resource('account','AccountController');
+
 
 Route::get('/', function()
 {

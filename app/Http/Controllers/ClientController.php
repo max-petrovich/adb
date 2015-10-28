@@ -24,9 +24,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = User::all();
+        $clients = User::with('contacts')->get();
 
-        return view('client.index')->with('clients', $clients);
+        return view('client.index',compact('clients'));
     }
 
     /**
