@@ -14,7 +14,6 @@ class User extends Model
         return $query->with('contacts', 'location', 'passport', 'socialInfo', 'work');
     }
 
-
     public function contacts() {
         return $this->hasOne(\App\Models\UserContacts::class);
     }
@@ -35,7 +34,11 @@ class User extends Model
         return $this->hasOne(\App\Models\UserWork::class);
     }
 
-    public function getFIO() {
+    public function getFioAttribute() {
         return $this->last_name . ' ' . $this->first_name . ' ' . $this->middle_name;
+    }
+
+    public function getFioPassportNumberAttribute() {
+        return $this->fio . ' ('.$this->passport->series . $this->passport->number . ')';
     }
 }

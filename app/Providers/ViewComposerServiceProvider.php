@@ -3,9 +3,13 @@
 namespace App\Providers;
 
 use App\Models\City;
+use App\Models\Currency;
+use App\Models\DepositRate;
+use App\Models\DepositType;
 use App\Models\Disability;
 use App\Models\MaritalStatus;
 use App\Models\Nationality;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use JsValidator;
 use View;
@@ -21,6 +25,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->clientForm();
+        $this->depositForm();
     }
 
     /**
@@ -46,6 +51,20 @@ class ViewComposerServiceProvider extends ServiceProvider
                 'cities' => City::lists('name', 'id'),
                 'disabilities' => Disability::lists('name', 'id'),
                 'jsValidator' => JsValidator::formRequest('App\Http\Requests\StoreClientRequest')
+            ]);
+        });
+    }
+
+    public function depositForm() {
+        View::composer([
+            'deposit.partials.form'
+        ], function ($view) {
+            $view->with([
+                'users' => User::get()->lists('fio_passport_number', 'id'),
+                'deposit_type' => DepositType::lists('name', 'id'),
+                'currency' => Currency::lists('name', 'code'),
+                'deposit_rate' => DepositRate::lists('name', 'id'),
+                //'jsValidator' => JsValidator::formRequest('App\Http\Requests\StoreClientRequest')
             ]);
         });
     }

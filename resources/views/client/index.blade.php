@@ -21,7 +21,7 @@
             @foreach ($clients as $client)
                 <tr>
                     <td><a href="{{ route('client.show', $client->id) }}">{{ $client->id }}</a></td>
-                    <td><a href="{{ route('client.show', $client->id) }}">{{ $client->getFIO() }}</a></td>
+                    <td><a href="{{ route('client.show', $client->id) }}">{{ $client->fio }}</a></td>
                     <td>{{ trans('sex.' . $client->sex) }}</td>
                     <td>{{ $client->contacts->email }}</td>
                     <td>

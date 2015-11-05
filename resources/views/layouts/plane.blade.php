@@ -9,14 +9,21 @@
 	<title>АДБ</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1" name="viewport"/>
-	<meta content="" name="description"/>
-	<meta content="" name="author"/>
 
-	<link rel="stylesheet" href="{{ asset("assets/stylesheets/styles.css") }}" />
-    <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <script src="{{ asset("assets/scripts/frontend.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("assets/inputmask/inputmask.js") }}" type="text/javascript"></script>
-    <script src="/js/main.js" type="text/javascript"></script>
+	{!! Html::style('assets/stylesheets/styles.css') !!}
+
+	{!! Html::script('js/jquery-2.1.4.min.js') !!}
+	{!! Html::script('assets/scripts/frontend.js') !!}
+	{!! Html::script('assets/inputmask/inputmask.js') !!}
+
+	<!-- Chosen -->
+	{!! Html::style('vendor/chosen/chosen.min.css') !!}
+	{!! Html::script('vendor/chosen/chosen.jquery.min.js') !!}
+
+	{!! Html::script('js/main.js') !!}
+	<script>
+		var web_root = '{{ url('') }}';
+	</script>
 </head>
 <body>
 	@yield('body')

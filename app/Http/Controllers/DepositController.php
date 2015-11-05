@@ -16,6 +16,7 @@ class DepositController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -25,7 +26,7 @@ class DepositController extends Controller
      */
     public function create()
     {
-        //
+        return view('deposit.create');
     }
 
     /**

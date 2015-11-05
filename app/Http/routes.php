@@ -5,6 +5,12 @@ Route::resource('client','ClientController');
 Route::resource('deposit','DepositController');
 Route::resource('account','AccountController');
 
+Route::resource('deposit_rate','DepositRateController', [
+	'only' => ['show']
+]);
+Route::resource('deposit_type.rates', 'DepositTypeController', [
+	'only' => ['index']
+]);
 
 Route::get('/', function()
 {
