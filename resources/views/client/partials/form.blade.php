@@ -1,7 +1,7 @@
-<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js" type="text/javascript"></script>
-<script src="{{ url('/js/jsvalidation.min.js') }}" type="text/javascript"></script>
+{!! Html::script('vendor/jsvalidation/js/jquery.validate.min.js') !!}
+{!! Html::script('vendor/jsvalidation/js/jsvalidation.min.js') !!}
 
-{!! $jsValidator !!}
+{!! JsValidator::formRequest(\App\Http\Requests\StoreClientRequest::class, '#clientForm') !!}
 
 @include('client.partials.errors')
 

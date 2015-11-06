@@ -11,7 +11,6 @@ use App\Models\MaritalStatus;
 use App\Models\Nationality;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
-use JsValidator;
 use View;
 use Cache;
 
@@ -49,8 +48,7 @@ class ViewComposerServiceProvider extends ServiceProvider
                 'marital_statuses' => MaritalStatus::lists('name', 'id'),
                 'nationalities' => Nationality::lists('name', 'id'),
                 'cities' => City::lists('name', 'id'),
-                'disabilities' => Disability::lists('name', 'id'),
-                'jsValidator' => JsValidator::formRequest('App\Http\Requests\StoreClientRequest')
+                'disabilities' => Disability::lists('name', 'id')
             ]);
         });
     }
@@ -63,8 +61,7 @@ class ViewComposerServiceProvider extends ServiceProvider
                 'users' => User::get()->lists('fio_passport_number', 'id'),
                 'deposit_type' => DepositType::lists('name', 'id'),
                 'currency' => Currency::lists('name', 'code'),
-                'deposit_rate' => DepositRate::lists('name', 'id'),
-                //'jsValidator' => JsValidator::formRequest('App\Http\Requests\StoreClientRequest')
+                'deposit_rate' => DepositRate::lists('name', 'id')
             ]);
         });
     }

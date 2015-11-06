@@ -1,7 +1,11 @@
 {!! Html::script('vendor/jsvalidation/js/jquery.validate.min.js') !!}
 {!! Html::script('vendor/jsvalidation/js/jsvalidation.min.js') !!}
 
+{!! JsValidator::formRequest(\App\Http\Requests\StoreDepositRequest::class, '#depositForm') !!}
+
 {!! Html::script('vendor/moment/moment.js') !!}
+
+{!! Html::script('js/deposit.js') !!}
 
 @include('deposit.partials.errors')
 
@@ -23,22 +27,22 @@
     <div class="form-group">
         {!! Form::label('user_id', 'Клиент', ['class' => 'col-sm-2 control-label']) !!}
         <div class="col-sm-4">
-            {!! Form::select('user_id', $users->prepend(null), null, ['class' => 'form-control chosen-select', 'data-placeholder' => 'Выберите клиента']) !!}
+            {!! Form::select('user_id', [null] + $users->toArray(), null, ['class' => 'form-control chosen-select', 'data-placeholder' => 'Выберите клиента']) !!}
         </div>
     </div>
 
     <div class="form-group">
-        {!! Form::label('deposite_type_id', 'Тип депозита', ['class' => 'col-sm-2 control-label']) !!}
+        {!! Form::label('deposit_type_id', 'Тип депозита', ['class' => 'col-sm-2 control-label']) !!}
         <div class="col-sm-2">
-            {!! Form::select('deposite_type_id', $deposit_type->prepend(null), null, ['class' => 'form-control chosen-select', 'data-placeholder' => 'Выберите тип депозита']) !!}
+            {!! Form::select('deposit_type_id', [null] + $deposit_type->toArray(), null, ['class' => 'form-control chosen-select', 'data-placeholder' => 'Выберите тип депозита']) !!}
         </div>
     </div>
 
 
     <div class="form-group" id="deposit_rate_block" style="display:none;">
-        {!! Form::label('rate_id', 'Депозитная линия', ['class' => 'col-sm-2 control-label']) !!}
+        {!! Form::label('deposit_rate_id', 'Депозитная линия', ['class' => 'col-sm-2 control-label']) !!}
         <div class="col-sm-3">
-            {!! Form::select('rate_id', [], null, ['class' => 'form-control chosen-select', 'data-placeholder' => 'Выберите депозитную линию']) !!}
+            {!! Form::select('deposit_rate_id', [null], null, ['class' => 'form-control chosen-select', 'data-placeholder' => 'Выберите депозитную линию']) !!}
         </div>
     </div>
 
@@ -55,7 +59,7 @@
             <div class="form-group">
                 {!! Form::label('date_start', 'Дата начала', ['class' => 'col-sm-2 control-label']) !!}
                 <div class="col-sm-2">
-                    {!! Form::date('date_start', \Carbon\Carbon::now(), ['class' => 'form-control', 'readonly']) !!}
+                    {!! Form::date('date_start', \Carbon\Carbon::now(), ['class' => 'form-control', 'min' => \Carbon\Carbon::now()->format('Y-m-d')]) !!}
                 </div>
             </div>
 
@@ -91,9 +95,8 @@
                 {!! Form::number('amount', null, ['class' => 'form-control', 'min' => 0]) !!}
             </div>
         </div>
+
     </div>
-
-
 
 
     <div class="form-group">
@@ -101,5 +104,6 @@
             {!! Form::submit('Отправить', ['class' => 'btn btn-primary']) !!}
         </div>
     </div>
+
 
 </div>

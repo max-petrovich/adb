@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url ('') }}">АДБ - 1</a>
+                <a class="navbar-brand" href="{{ url ('') }}">Автоматизация Банковской Деятельности</a>
             </div>
             <!-- /.navbar-header -->
             @include('partials.menu')

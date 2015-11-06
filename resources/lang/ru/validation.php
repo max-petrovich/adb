@@ -138,7 +138,14 @@ return [
             'work_place' => 'Место работы',
             'position' => 'Должность',
             'salary' => 'Ежемесячный доход'
-        ]
+        ],
+
+		'user_id' => 'Клиент',
+		// Deposit
+		'contract_number' => 'Номер договора',
+		'deposit_type_id' => 'Тип депозита',
+		'rate_id' => 'Депозитная линия',
+		'amount' => 'Сумма'
     ],
 
 ];
