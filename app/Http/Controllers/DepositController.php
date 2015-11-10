@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDepositRequest;
+use App\Models\Deposit;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,9 @@ class DepositController extends Controller
      */
     public function index()
     {
-        //
+        $deposits = Deposit::all();
+
+        return view('deposit.index',compact('deposits'));
 
     }
 
@@ -39,6 +42,8 @@ class DepositController extends Controller
     public function store(StoreDepositRequest $request)
     {
         $this->dispatchFrom(\App\Jobs\OpenDeposit::class, $request);
+
+        return redirect()->route('deposit.index');
     }
 
     /**
@@ -49,7 +54,9 @@ class DepositController extends Controller
      */
     public function show($id)
     {
-        //
+        $deposit = Deposit::findOrFail($id);
+
+        return view('deposit.show', compact('deposit'));
     }
 
     /**

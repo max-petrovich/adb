@@ -7,6 +7,8 @@
             <tr>
                 <th>Номер счёта</th>
                 <th>План счетов</th>
+                <th>Наименование</th>
+                <th>Тип счёта</th>
                 <th>Держатель счета</th>
                 <th>Валюта</th>
                 <th>Дебет</th>
@@ -19,11 +21,14 @@
                 <tr>
                     <td>{{ $account->id }}</td>
                     <td>{{ $account->chart->id }}</td>
-                    <td>@if ($account->user == null) {{ trans('all.bank') }} @else <a href="{{ route('client.show', $account->user->id) }}">{{ $account->user->getFIO() }}</a> @endif</td>
+                    <td>@if ($account->deposits()->first()) <a href="{{ route('deposit.show', $account->deposits()->first()->pivot->deposit_id) }}">Депозит {{ $account->deposits()->first()->rate->name }}</a>
+                        @else {{ $account->chart->name }} @endif</td>
+                    <td>@if ($account->user != null) {{ trans('all.account_type_'.$account->type_id) }} @endif</td>
+                    <td>@if ($account->user == null) {{ trans('all.bank') }} @else <a href="{{ route('client.show', $account->user->id) }}">{{ $account->user->fio }}</a> @endif</td>
                     <td>{{ trans( 'currency.' . $account->currency->code) }}</td>
-                    <td>{{ $account->debit }}</td>
-                    <td>{{ $account->credit }}</td>
-                    <td>{{ $account->balances }}</td>
+                    <td>{{ number_format($account->debit, 2) }}</td>
+                    <td>{{ number_format($account->credit, 2) }}</td>
+                    <td>{{ number_format($account->balances, 2) }}</td>
                 </tr>
             @endforeach
             </tbody>

@@ -27,7 +27,6 @@ $(document).ready(function() {
         var deposit_rate_id = $(this).val();
         // Get deposit rate info
         $.get(web_root + '/deposit_rate/'+deposit_rate_id, function(r) {
-            console.log(r);
             if (r.type_id == 2) {
                 $('#contract_term').val(r.term);
                 $('#date_expiration').val(moment().add(r.term, 'days').format('YYYY-MM-DD'));
@@ -39,12 +38,16 @@ $(document).ready(function() {
         }, 'json');
     });
 
-    // Submit form
-    //$(document).on('submit', '#depositForm', function() {
-    //    if (confirm('Вы хотите совершить бухгалтерскую проводку?')) {
-    //        return true;
-    //    }
-    //    return false;
-    //});
+    $(document).on('change', '#date_start', function() {
+        $('#date_expiration').val(moment($('#date_start').val()).add($('#contract_term').val(), 'days').format('YYYY-MM-DD'));
+    });
+
+     // Submit form
+    $(document).on('submit', '#depositForm', function() {
+        if (confirm('Вы хотите совершить бухгалтерскую проводку?')) {
+            return true;
+        }
+        return false;
+    });
 
 });

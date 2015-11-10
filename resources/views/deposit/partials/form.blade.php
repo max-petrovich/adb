@@ -18,13 +18,6 @@
 <div class="form-horizontal">
 
     <div class="form-group">
-        {!! Form::label('contract_number', 'Номер договора', ['class' => 'col-sm-2 control-label']) !!}
-        <div class="col-sm-3">
-            {!! Form::number('contract_number', 1, ['class' => 'form-control', 'min' => 1]) !!}
-        </div>
-    </div>
-
-    <div class="form-group">
         {!! Form::label('user_id', 'Клиент', ['class' => 'col-sm-2 control-label']) !!}
         <div class="col-sm-4">
             {!! Form::select('user_id', [null] + $users->toArray(), null, ['class' => 'form-control chosen-select', 'data-placeholder' => 'Выберите клиента']) !!}
@@ -91,8 +84,8 @@
 
         <div class="form-group">
             {!! Form::label('amount', 'Сумма', ['class' => 'col-sm-2 control-label']) !!}
-            <div class="col-sm-2">
-                {!! Form::number('amount', null, ['class' => 'form-control', 'min' => 0]) !!}
+            <div class="col-sm-4">
+                {!! Form::text('amount', null, ['class' => 'form-control', 'min' => 0, 'data-inputmask' => "'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'placeholder': '0'"]) !!}
             </div>
         </div>
 

@@ -24,9 +24,6 @@ class StoreDepositRequest extends Request
     public function rules()
     {
         return [
-            'contract_number' => [
-                'required', 'digits_between:1,13'
-            ],
             'user_id' => [
                 'exists:users,id'
             ],
