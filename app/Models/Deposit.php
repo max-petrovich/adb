@@ -39,4 +39,9 @@ class Deposit extends Model
     public function rate() {
         return $this->belongsTo(\App\Models\DepositRate::class);
     }
+
+    public function scopeActive($query) {
+        return $query->where('date_expiration', '>', Carbon::create()->format('Y-m-d'))
+            ->orWhere('date_expiration', null);
+    }
 }

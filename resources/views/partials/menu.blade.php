@@ -31,6 +31,14 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="#"><i class="fa fa-gears"></i> Банковские операции<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ route('bank-operations.close-day') }}"><i class="fa fa-close fa-fw"></i> Закрытие банковского дня</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

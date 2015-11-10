@@ -27,4 +27,20 @@ class Account extends Model
         return $this->belongsToMany(\App\Models\Deposit::class);
     }
 
+    public function scopeMain($query) {
+        return $query->where('type_id', 1);
+    }
+
+    public function scopePercent($query) {
+        return $query->where('type_id', 2);
+    }
+
+    public function scopeChart1010($query) {
+        return $query->where('chart_id', 1010);
+    }
+
+    public function scopeChart7327($query) {
+        return $query->where('chart_id', 7327);
+    }
+
 }

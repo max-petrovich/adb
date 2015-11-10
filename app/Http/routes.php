@@ -12,6 +12,10 @@ Route::resource('deposit_type.rates', 'DepositTypeController', [
 	'only' => ['index']
 ]);
 
+Route::controller('bank-operations', 'BankOperationsController', [
+	'getCloseDay' => 'bank-operations.close-day'
+]);
+
 Route::get('/', function()
 {
     return redirect()->route('client.index');
