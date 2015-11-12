@@ -9,12 +9,31 @@
 
     @if(Session::has('deposit_percents_message'))
         <div class="alert alert-success">
-            <h5><b>Начисление процентов на процентные счета клиентов</b></h5>
+            <h5><b>Начисление процентов по депозитам на процентные счета клиентов</b></h5>
             <ul>
                 @foreach(Session::get('deposit_percents_message') as $account_id=>$sum)
-                    <li>На счёт {{ $account_id }} начислена сумма {{ $sum }}</li>
+                    <li>На счёт {{ $account_id }} начислена сумма {{ number_format($sum, 2) }} (BYR)</li>
                 @endforeach
             </ul>
+        </div>
+    @else
+        <div class="alert alert-warning">
+            Нет активных вкладов
+        </div>
+    @endif
+
+    @if(Session::has('credit_percents_message'))
+        <div class="alert alert-success">
+            <h5><b>Получение процентов по кредитам</b></h5>
+            <ul>
+                @foreach(Session::get('credit_percents_message') as $account_id=>$sum)
+                    <li>На счёт {{ $account_id }} начислена сумма {{ number_format($sum, 2) }} (BYR)</li>
+                @endforeach
+            </ul>
+        </div>
+    @else
+        <div class="alert alert-warning">
+            Нет активных кредитов
         </div>
     @endif
 

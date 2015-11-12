@@ -27,6 +27,10 @@ class Account extends Model
         return $this->belongsToMany(\App\Models\Deposit::class);
     }
 
+    public function credits() {
+        return $this->belongsToMany(\App\Models\Credit::class);
+    }
+
     public function scopeMain($query) {
         return $query->where('type_id', 1);
     }

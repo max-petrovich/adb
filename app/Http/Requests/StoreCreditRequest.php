@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class StoreDepositRequest extends Request
+class StoreCreditRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,11 +27,11 @@ class StoreDepositRequest extends Request
             'user_id' => [
                 'exists:users,id'
             ],
-            'deposit_type_id' => [
-                'exists:deposit_types,id'
+            'credit_type_id' => [
+                'exists:credit_types,id'
             ],
-            'deposit_rate_id' => [
-                'exists:deposit_rates,id'
+            'credit_rate_id' => [
+                'exists:credit_rates,id'
             ],
             'date_start' => [
                 'required', 'date', 'after:yesterday'

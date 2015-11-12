@@ -74,6 +74,8 @@ return [
 	"url"                  => "The :attribute format is invalid.",
 	"timezone"             => "The :attribute must be a valid zone.",
 
+	"min_value"            => "Значение в поле :attribute должно быть более :min",
+
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Language Lines

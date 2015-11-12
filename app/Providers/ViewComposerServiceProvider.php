@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\City;
+use App\Models\CreditType;
 use App\Models\Currency;
 use App\Models\DepositRate;
 use App\Models\DepositType;
@@ -25,6 +26,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         $this->clientForm();
         $this->depositForm();
+        $this->creditForm();
     }
 
     /**
@@ -60,8 +62,19 @@ class ViewComposerServiceProvider extends ServiceProvider
             $view->with([
                 'users' => User::get()->lists('fio_passport_number', 'id'),
                 'deposit_type' => DepositType::lists('name', 'id'),
-                'currency' => Currency::lists('name', 'code'),
-                'deposit_rate' => DepositRate::lists('name', 'id')
+                'currency' => Currency::lists('name', 'code')
+            ]);
+        });
+    }
+
+    public function creditForm() {
+        View::composer([
+            'credit.partials.form'
+        ], function ($view) {
+            $view->with([
+                'users' => User::get()->lists('fio_passport_number', 'id'),
+                'credit_type' => CreditType::lists('name', 'id'),
+                'currency' => Currency::lists('name', 'code')
             ]);
         });
     }

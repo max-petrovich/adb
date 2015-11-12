@@ -2,14 +2,24 @@
 
 
 Route::resource('client','ClientController');
-Route::resource('deposit','DepositController');
 Route::resource('account','AccountController');
+Route::resource('deposit','DepositController');
+Route::resource('credit', 'CreditController');
+Route::resource('credit-chart', 'CreditChartController');
 
+/* Deposits */
 Route::resource('deposit_rate','DepositRateController', [
 	'only' => ['show']
 ]);
 Route::resource('deposit_type.rates', 'DepositTypeController', [
 	'only' => ['index']
+]);
+/* Credits */
+Route::resource('credit_rate','CreditRateController', [
+		'only' => ['show']
+]);
+Route::resource('credit_type.rates', 'CreditTypeController', [
+		'only' => ['index']
 ]);
 
 Route::controller('bank-operations', 'BankOperationsController', [

@@ -31,6 +31,20 @@
                     </li>
                 </ul>
             </li>
+            <li {!! (Request::is('*credit') ? 'class="active"' : '') !!}>
+                <a href="#"><i class="fa fa-calculator"></i> Кредиты<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ route('credit.create') }}"><i class="fa fa-edit fa-fw"></i> Добавить кредит</a>
+                    </li>
+                    <li {!! (Request::is('*credit') ? 'class="active"' : '') !!}>
+                        <a href="{{ route('credit.index') }}"><i class="fa fa-table fa-fw"></i> Список кредитов</a>
+                    </li>
+                    <li {!! (Request::is('*credit-chart') ? 'class="active"' : '') !!}>
+                        <a href="{{ route('credit-chart.index') }}"><i class="fa fa-table fa-fw"></i> График начисления процентов</a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a href="#"><i class="fa fa-gears"></i> Банковские операции<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">

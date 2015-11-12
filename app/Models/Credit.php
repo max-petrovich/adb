@@ -5,19 +5,15 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class Deposit extends Model
+class Credit extends Model
 {
     public $timestamps = false;
 
     protected $fillable = array('user_id','rate_id', 'type_id', 'contract_id', 'currency_code', 'date_start', 'date_expiration', 'contract_term', 'amount');
 
     public function setDateExpirationAttribute() {
-        if ($this->attributes['type_id'] == 1) {
-            $this->attributes['date_expiration'] = NULL;
-        } else {
-            $depositRate = DepositRate::where(['id' => $this->attributes['rate_id'], 'type_id' => $this->attributes['type_id'] ])->first();
-            $this->attributes['date_expiration'] = Carbon::parse($this->attributes['date_start'])->addDays($depositRate->term)->format("Y-m-d");
-        }
+        $creditRate = CreditRate::where(['id' => $this->attributes['rate_id'], 'type_id' => $this->attributes['type_id'] ])->first();
+        $this->attributes['date_expiration'] = Carbon::parse($this->attributes['date_start'])->addDays($creditRate->term)->format("Y-m-d");
     }
 
     public function accounts() {
@@ -33,11 +29,11 @@ class Deposit extends Model
     }
 
     public function type() {
-        return $this->belongsTo(\App\Models\DepositType::class);
+        return $this->belongsTo(\App\Models\CreditType::class);
     }
 
     public function rate() {
-        return $this->belongsTo(\App\Models\DepositRate::class);
+        return $this->belongsTo(\App\Models\CreditRate::class);
     }
 
     public function scopeActive($query) {

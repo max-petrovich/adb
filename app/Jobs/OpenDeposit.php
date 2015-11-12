@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use DB;
 use Session;
 use Illuminate\Contracts\Bus\SelfHandling;
+use App\Helpers\AccountHelper;
 
 class OpenDeposit extends Job implements SelfHandling
 {
@@ -18,10 +19,6 @@ class OpenDeposit extends Job implements SelfHandling
      * @var
      */
     private $user_id;
-    /**
-     * @var
-     */
-    private $contract_number;
     /**
      * @var
      */
@@ -38,10 +35,6 @@ class OpenDeposit extends Job implements SelfHandling
      * @var
      */
     private $amount;
-
-    private $account_chart_1010 = 1010000000002;
-
-    private $account_chart_7327 = 7327000000009;
 
     private $user_chart_id = 3014;
 
@@ -64,12 +57,12 @@ class OpenDeposit extends Job implements SelfHandling
      *
      * @return void
      */
-    public function handle()
+    public function handle(AccountHelper $accountHelper)
     {
         $depositRate = DepositRate::where(['id' => $this->deposit_rate_id, 'type_id' => $this->deposit_type_id])->first();
         $depositCurrencyCode = $depositRate->currency_code;
 
-        DB::transaction(function () use($depositRate, $depositCurrencyCode) {
+        DB::transaction(function () use($depositRate, $depositCurrencyCode, $accountHelper) {
             // Create contract
             $contract = Contract::create(['user_id' => $this->user_id]);
 
@@ -77,7 +70,7 @@ class OpenDeposit extends Job implements SelfHandling
             // Create accounts
             foreach ([1,2] as $account_type_id) {
                 $accounts[$account_type_id] = Account::create([
-                    'id' => $this->generateAccountNumber($this->user_id, $this->user_chart_id, $account_type_id, $contract->id),
+                    'id' => $accountHelper->generateAccountNumber($this->user_chart_id, $account_type_id, $contract->id),
                     'user_id' => $this->user_id,
                     'chart_id' => $this->user_chart_id,
                     'type_id' => $account_type_id,
@@ -103,8 +96,8 @@ class OpenDeposit extends Job implements SelfHandling
             $deposit->accounts()->attach($accounts[2]->id);
 
             // ##### Accounting entry #####
-            $account_chart_1010 = Account::where('id', $this->account_chart_1010)->first();
-            $account_chart_7327 = Account::where('id', $this->account_chart_7327)->first();
+            $account_chart_1010 = Account::chart1010()->first();
+            $account_chart_7327 = Account::chart7327()->first();
             $account_user = $accounts[1];
 
             // 1. Adding money to the cashier
@@ -135,14 +128,5 @@ class OpenDeposit extends Job implements SelfHandling
 
     }
 
-    private function generateAccountNumber($user_id, $chart_id, $type_id, $contract_number) {
-        $accountNumber = sprintf('%d%07d%d', $chart_id, $contract_number, $type_id);
-        $accountNumber .= $this->getControlKeyToAccount($accountNumber);
 
-        return $accountNumber;
-    }
-
-    private function getControlKeyToAccount($number) {
-        return array_sum(str_split($number)) % 10;
-    }
 }
