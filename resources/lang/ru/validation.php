@@ -74,7 +74,7 @@ return [
 	"url"                  => "The :attribute format is invalid.",
 	"timezone"             => "The :attribute must be a valid zone.",
 
-	"min_value"            => "Значение в поле :attribute должно быть более :min",
+	"min_value"            => "Значение в поле <b>:attribute</b> должно быть более :min",
 
 	/*
 	|--------------------------------------------------------------------------
@@ -147,7 +147,14 @@ return [
 		'contract_number' => 'Номер договора',
 		'deposit_type_id' => 'Тип депозита',
 		'rate_id' => 'Депозитная линия',
-		'amount' => 'Сумма'
+		'amount' => 'Сумма',
+
+
+			//
+		'card_number' => 'Номер карты',
+		'password' => 'PIN-код',
+		'sum' => 'Сумма',
+		'phone_number' => 'Номер телефона'
     ],
 
 ];

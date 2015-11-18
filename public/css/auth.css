@@ -1,0 +1,13 @@
+html, body, .container-table {
+    height: 100%;
+}
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+body {
+    background: url('/img/bg.jpg') no-repeat !important;
+}

@@ -16,10 +16,6 @@
 	{!! Html::script('assets/scripts/frontend.js') !!}
 	{!! Html::script('assets/inputmask/inputmask.js') !!}
 
-	<!-- Chosen -->
-	{!! Html::style('vendor/chosen/chosen.min.css') !!}
-	{!! Html::script('vendor/chosen/chosen.jquery.min.js') !!}
-
 	{!! Html::script('js/main.js') !!}
 	<script>
 		var web_root = '{{ url('') }}';

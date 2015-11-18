@@ -1,0 +1,30 @@
+html, body, .container-table {
+    height: 100%;
+}
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+body {
+    background: url('/img/bg.jpg') no-repeat !important;
+}
+
+.atm-container {
+    color:#fff;
+}
+
+.main-screen-menu {
+    margin-top:40px;
+    list-style-position: inside;
+    list-style-type: none;
+    padding:0;
+}
+.main-screen-menu li {
+    margin-bottom:20px;
+}
+.main-screen-menu li button {
+    width:100%;
+}

@@ -26,6 +26,26 @@ Route::controller('bank-operations', 'BankOperationsController', [
 	'getCloseDay' => 'bank-operations.close-day'
 ]);
 
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+Route::post('auth/cardNumber', 'Auth\AuthController@postCardNumber');
+Route::get('auth/resetCard', 'Auth\AuthController@getResetCard');
+
+
+Route::group(['middleware' => 'auth', 'prefix' => 'atm'], function() {
+	Route::get('/', 'ATM\AtmController@getIndex');
+
+	Route::get('stateAccount', 'ATM\AtmController@getStateAccount');
+
+	Route::resource('withdraw', 'ATM\WithdrawController');
+	Route::resource('payment', 'ATM\PaymentController');
+
+	Route::any('check','ATM\CheckController@index');
+});
+
 Route::get('/', function()
 {
     return redirect()->route('client.index');
